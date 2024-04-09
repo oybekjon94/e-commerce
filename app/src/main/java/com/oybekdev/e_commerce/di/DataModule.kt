@@ -19,7 +19,6 @@ object DataModule {
 
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "store")
 
-
     @Provides
     @Singleton
     fun provideGson() = Gson()
