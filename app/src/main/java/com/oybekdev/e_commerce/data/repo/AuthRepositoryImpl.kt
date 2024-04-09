@@ -6,8 +6,9 @@ import com.oybekdev.e_commerce.data.store.TokenStore
 import com.oybekdev.e_commerce.data.store.UserStore
 import com.oybekdev.e_commerce.domain.User
 import com.oybekdev.e_commerce.domain.repo.AuthRepository
+import javax.inject.Inject
 
-class AuthRepositoryImpl(
+class AuthRepositoryImpl  @Inject constructor(
     private val authApi: AuthApi,
     private val tokenStore: TokenStore,
     private val userStore: UserStore

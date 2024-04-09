@@ -3,4 +3,13 @@
     <string name="connection_error">Connection error\n</string>
     <string name="error">An error occured</string>
     <string name="invalid_credentials">Invalid credentials\n</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_onboarding_next">Next</string>
+    <string name="welcome_to_lokmart_n_grocery_applications">Welcome to LokMart!\n Grocery Applications</string>
+    <string name="onboarding_title_0">Welcome to LokMart! \n Grocery Applications</string>
+    <string name="onboarding_title_1">Best Quality and \n Fast Delivery</string>
+    <string name="onboarding_description_0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
+    <string name="onboarding_description_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
+    <string name="fragment_onboarding_get_started">Get Started</string>
 </resources>
