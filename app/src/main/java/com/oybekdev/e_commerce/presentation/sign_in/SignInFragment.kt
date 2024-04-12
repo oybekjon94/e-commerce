@@ -37,6 +37,7 @@ class SignInFragment : Fragment() {
     private fun subscribeToLiveData() = with(binding) {
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             progress.isInvisible = isLoading
+            singInBtn.text = if(isLoading) null else getString(R.string.sign_in_button)
         }
         viewModel.events.observe(viewLifecycleOwner) { event ->
             when (event) {
@@ -44,13 +45,14 @@ class SignInFragment : Fragment() {
                 SignInViewModel.Event.ConnectionError -> toast(R.string.connection_error)
                 SignInViewModel.Event.Error -> toast(R.string.error)
                 SignInViewModel.Event.InvalidCredentials -> toast(R.string.invalid_credentials)
+                SignInViewModel.Event.NavigateToHome -> toast(R.string.app_name)
             }
         }
 
     }
 
     private fun initUi() = with(binding) {
-        signIn.setOnClickListener {
+        singInBtn.setOnClickListener {
             viewModel.signIn(username.text.toString(), password.text.toString())
         }
     }
