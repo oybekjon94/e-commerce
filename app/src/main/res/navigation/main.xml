@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
-    app:startDestination="@id/signInFragment">
-
-
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     app:startDestination="@id/onboardingFragment">
@@ -12,18 +8,13 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.oybekdev.e_commerce.presentation.sign_in.SignInFragment"
-        android:label="SignInFragment" />
-    <fragment android:id="@+id/placeholder" />
-
-
-</navigation>
-
         android:label="SignInFragment"
         tools:layout="@layout/fragment_sign_in"
         />
+
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.oybekdev.e_commerce.presentation.onboarding.OnboardingFragment"
+        android:name="com.oybekdev.e_commerce.presentation.sign_in.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding">
 
