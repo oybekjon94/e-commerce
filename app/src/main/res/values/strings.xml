@@ -20,4 +20,9 @@
     <string name="onboarding_description_0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
     <string name="onboarding_description_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
     <string name="fragment_onboarding_get_started">Get Started</string>
+    <string name="sign_up_register">Register</string>
+    <string name="fragment_sign_up_terms_and_conditions">By tapping “Register” you accept our terms and condition</string>
+    <string name="sign_up_have_account">Already have account?</string>
+    <string name="fragment_sign_up_sign_in">Login</string>
+    <string name="already_registered">This mail already is regestered\n</string>
 </resources>
