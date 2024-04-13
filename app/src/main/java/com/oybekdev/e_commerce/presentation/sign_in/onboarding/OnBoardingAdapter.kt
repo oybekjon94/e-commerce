@@ -1,4 +1,4 @@
-package com.oybekdev.e_commerce.presentation.onboarding
+package com.oybekdev.e_commerce.presentation.sign_in.onboarding
 
 import com.oybekdev.e_commerce.databinding.ItemOnboardingBinding
 

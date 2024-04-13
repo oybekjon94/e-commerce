@@ -20,4 +20,15 @@
     <string name="onboarding_description_0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
     <string name="onboarding_description_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</string>
     <string name="fragment_onboarding_get_started">Get Started</string>
+    <string name="fragment_home_greeting">Hello, %s</string>
+    <string name="fragment_home_good_morning">Good morning</string>
+    <string name="fragment_home_search">Search...</string>
+    <string name="fragment_home_categories">Categories</string>
+    <string name="show_all">Show all</string>
+    <string name="item_category_count">%d items</string>
+    <string name="fragment_item_product_discount">%d%% OFF</string>
+    <string name="item_product_ratings_count">%d ratings</string>
+    <string name="price_striked">$%.1f</string>
+    <string name="error_loading">an error occured...</string>
+    <string name="retry">Retry\\n</string>
 </resources>

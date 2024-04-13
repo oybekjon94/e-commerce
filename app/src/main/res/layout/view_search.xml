@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@drawable/search_background"
+        android:fontFamily="@font/regular"
+        android:hint="@string/fragment_home_search"
+        android:textColor="@color/soft_gray"
+        android:textSize="16sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="18dp"
+        android:drawablePadding="16dp"
+        android:paddingHorizontal="25dp"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@id/filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableStart="@drawable/ic_search" />
+
+    <ImageButton
+        android:id="@+id/filter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/search_background"
+        android:src="@drawable/filter"
+        app:layout_constraintBottom_toBottomOf="@id/search"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
