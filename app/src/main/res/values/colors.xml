@@ -6,4 +6,8 @@
     <color name="orange">#FA662E</color>
     <color name="gray_1">#E8ECF2</color>
     <color name="dark">#303733</color>
+    <color name="dark_text">#303733</color>
+    <color name="indicator_unchecked">#BFC9DA</color>
+    <color name="indicator_checked">#F97941</color>
+
 </resources>
