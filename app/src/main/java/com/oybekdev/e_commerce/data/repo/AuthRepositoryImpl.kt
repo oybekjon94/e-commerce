@@ -18,6 +18,5 @@ class AuthRepositoryImpl  @Inject constructor(
         val response = authApi.signIn(request)
         tokenStore.set(response.token)
         userStore.set(response.user)
-
     }
 }
