@@ -65,9 +65,9 @@ dependencies {
 
     //hilt
     implementation 'com.google.dagger:hilt-android:2.51'
-    kapt 'com.google.dagger:hilt-compiler:2.48'
+    kapt 'com.google.dagger:hilt-compiler:2.51'
 
-    //viewPagerIndicator
+    //viewPagerIndicatorsingIn
     implementation 'com.github.zhpanvip:viewpagerindicator:1.2.3'
 
     //glide
