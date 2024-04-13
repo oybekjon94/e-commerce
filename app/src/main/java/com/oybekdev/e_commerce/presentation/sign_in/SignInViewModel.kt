@@ -23,6 +23,7 @@ class SignInViewModel @Inject constructor(private val authRepository: AuthReposi
     fun signIn(username: String, password: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             authRepository.signIn(username, password)
+            events.postValue(Event.NavigateToHome)
         } catch (e: Exception) {
             when {
                 e is HttpException && e.code() == 404 -> events.postValue(Event.InvalidCredentials)
@@ -36,6 +37,7 @@ class SignInViewModel @Inject constructor(private val authRepository: AuthReposi
         object InvalidCredentials : Event()
         object ConnectionError : Event()
         object Error : Event()
+        object NavigateToHome : Event()
     }
 }
 

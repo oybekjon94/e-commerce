@@ -13,11 +13,11 @@ class AuthRepositoryImpl  @Inject constructor(
     private val tokenStore: TokenStore,
     private val userStore: UserStore
 ):AuthRepository {
-    override suspend fun signIn(username: String, password: String): User {
+    override suspend fun signIn(username: String, password: String){
         val request = SignInRequest(username, password)
         val response = authApi.signIn(request)
         tokenStore.set(response.token)
         userStore.set(response.user)
-        return response.user.toUser()
+
     }
 }

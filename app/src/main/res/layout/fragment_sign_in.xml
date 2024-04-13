@@ -1,28 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/username"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/background_sing_in"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/password"
+    <ImageView
+        android:id="@+id/lokmart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_description"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/signIn"
+    <TextView
+        android:id="@+id/app_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/app_description"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lokmart" />
+
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/semi_bold"
+        android:text="@string/fragment_sign_in_title"
+        android:textColor="@color/dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/description"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="27dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/fragment_sign_in_description"
+        android:textColor="@color/soft_gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/userNameLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="18dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconTint="@color/orange"
+
+        app:layout_constraintBottom_toTopOf="@id/passwordLayout"
+        app:startIconDrawable="@drawable/ic_user"
+        app:startIconTint="@color/soft_gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_field_background"
+            android:fontFamily="@font/medium"
+            android:hint="       Username"
+            android:textColor="@color/dark"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="29dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/orange"
+        app:layout_constraintBottom_toTopOf="@id/sing_in_btn"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/soft_gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_field_background"
+            android:fontFamily="@font/medium"
+            android:hint="       Password"
+            android:inputType="textPassword"
+            android:textColor="@color/dark" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/white"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/sing_in_btn"
+        app:layout_constraintEnd_toEndOf="@id/sing_in_btn"
+        app:layout_constraintStart_toStartOf="@id/sing_in_btn"
+        app:layout_constraintTop_toTopOf="@id/sing_in_btn" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sing_in_btn"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_backgraund"
+        android:fontFamily="@font/extra_bold"
+        android:text="@string/sign_in_button"
+        android:textSize="16sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@id/forgot"
+        app:layout_goneMarginBottom="19dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/forgot"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="42dp"
+        android:fontFamily="@font/semi_bold"
+        android:text="@string/forgot_password"
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/sign_up_text"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/sign_up_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/dont_account"
+        android:textColor="@color/soft_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sing_up"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sing_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/semi_bold"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/orange"
+        android:textSize="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/sign_up_text"
+        app:layout_constraintBottom_toBottomOf="@id/sign_up_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sign_up_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

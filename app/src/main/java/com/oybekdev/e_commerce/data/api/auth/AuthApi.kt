@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface AuthApi {
     
- @POST("/auth/sign-in/")
+ @POST("auth/sign-in")
  suspend fun signIn(@Body request: SignInRequest):SignInResponse
     
 }

@@ -3,6 +3,14 @@
     <string name="connection_error">Connection error\n</string>
     <string name="error">An error occured</string>
     <string name="invalid_credentials">Invalid credentials\n</string>
+    <string name="dont_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="fragment_sign_in_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</string>
+    <string name="fragment_sign_in_title">Welcome back</string>
+    <string name="app_description">Grocery app</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_onboarding_next">Next</string>
