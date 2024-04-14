@@ -8,8 +8,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:layout_height="0dp"
         android:background="@drawable/background_sing_in"
         app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,11 +69,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:inputType="text"
             android:layout_height="wrap_content"
             android:background="@drawable/input_field_background"
             android:fontFamily="@font/medium"
             android:hint="       Username"
+            android:inputType="text"
             android:textColor="@color/dark"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -88,7 +87,6 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:endIconTint="@color/orange"
-
         app:layout_constraintBottom_toTopOf="@id/passwordLayout"
         app:startIconDrawable="@drawable/ic_email"
         app:startIconTint="@color/soft_gray">
@@ -162,13 +160,13 @@
         android:id="@+id/terms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:fontFamily="@font/medium"
         android:layout_marginHorizontal="32dp"
-        android:textColor="@color/soft_gray"
-        app:layout_constraintBottom_toTopOf="@id/sign_up_text"
         android:layout_marginBottom="35dp"
-        android:text="@string/fragment_sign_up_terms_and_conditions"/>
+        android:fontFamily="@font/medium"
+        android:text="@string/fragment_sign_up_terms_and_conditions"
+        android:textColor="@color/soft_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/sign_up_text" />
 
     <TextView
         android:id="@+id/sign_up_text"
@@ -185,15 +183,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:id="@+id/singIn"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/semi_bold"
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
-        android:textAllCaps="false"
         android:text="@string/fragment_sign_up_sign_in"
+        android:textAllCaps="false"
         android:textColor="@color/orange"
         android:textSize="16dp"
         app:layout_constraintBaseline_toBaselineOf="@id/sign_up_text"

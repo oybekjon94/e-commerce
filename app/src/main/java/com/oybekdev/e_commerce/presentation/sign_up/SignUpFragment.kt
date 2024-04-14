@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -24,6 +24,7 @@ class SignUpFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        requireActivity().actionBar?.hide()
         binding = FragmentSignUpBinding.inflate(inflater)
         return binding.root
     }
@@ -37,7 +38,7 @@ class SignUpFragment : Fragment() {
 
     private fun subscribeToLiveData() = with(binding) {
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            progress.isInvisible = isLoading
+            progress.isVisible = isLoading
             register.text = if (isLoading) null else getString(R.string.sign_up_register)
         }
         viewModel.events.observe(viewLifecycleOwner) { event ->
