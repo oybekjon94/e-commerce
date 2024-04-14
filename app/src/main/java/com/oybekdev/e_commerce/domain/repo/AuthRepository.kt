@@ -10,4 +10,6 @@ interface AuthRepository {
     suspend fun signUp(username: String, email: String, password: String)
 
     fun destinationFlow(): Flow<Destination>
+    suspend fun onboarded()
+
 }

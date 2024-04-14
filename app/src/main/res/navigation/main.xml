@@ -16,15 +16,13 @@
             android:id="@+id/to_signUpFragment"
             app:destination="@+id/signUpFragment"
             app:popUpTo="@id/signUpFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
-        tools:layout="@layout/fragment_sign_in"
-        />
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.oybekdev.e_commerce.presentation.sign_in.onboarding.OnboardingFragment"
+        android:name="com.oybekdev.e_commerce.presentation.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding">
 
@@ -33,20 +31,41 @@
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.oybekdev.e_commerce.presentation.home.HomeFragment"
+        android:label="homeFragment"
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.oybekdev.e_commerce.presentation.sign_up.SignUpFragment"
         android:label="SignUpFragment"
-        tools:layout="@layout/fragment_sign_up" >
+        tools:layout="@layout/fragment_sign_up">
 
 
-    <action
-        android:id="@id/signInFragment"
-        app:destination="@id/signInFragment"
-        app:popUpTo="@id/signInFragment"
-        app:popUpToInclusive="true"/>
+        <action
+            android:id="@id/signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
+
+    <action
+        android:id="@+id/to_onboardingFragment"
+        app:destination="@id/onboardingFragment"
+        app:popUpTo="@id/main" />
+
+    <action
+        android:id="@+id/too_signInFragment"
+        app:destination="@id/signInFragment"
+        app:popUpTo="@id/main"/>
+
+    <action
+        android:id="@+id/to_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/main"/>
+
 
 </navigation>

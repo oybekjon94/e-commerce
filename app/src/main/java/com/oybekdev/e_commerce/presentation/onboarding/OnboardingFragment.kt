@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentOnboardingBinding
-import com.oybekdev.e_commerce.presentation.sign_in.onboarding.OnboardingFragmentDirections
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class OnboardingFragment:Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
     private val adapter = OnBoardingAdapter() //har safar yaralmasligi uchun
-
+private val viewModel by viewModels<OnBoardingViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,7 +73,7 @@ class OnboardingFragment:Fragment() {
 
         next.setOnClickListener {
             if (pager.currentItem == adapter.itemCount-1){ //oxirgi page bolsa
-                //viewModel.onboarded()
+                viewModel.onboarded()
                 findNavController().navigate(OnboardingFragmentDirections.toSignInFragment())
             }else{
                 pager.setCurrentItem(pager.currentItem+1, true)
