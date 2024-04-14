@@ -1,4 +1,4 @@
-package com.oybekdev.e_commerce.presentation.onboarding
+package com.oybekdev.e_commerce.presentation.sign_in.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

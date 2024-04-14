@@ -25,4 +25,15 @@
     <string name="sign_up_have_account">Already have account?</string>
     <string name="fragment_sign_up_sign_in">Login</string>
     <string name="already_registered">This mail already is regestered\n</string>
+    <string name="fragment_home_greeting">Hello, %s</string>
+    <string name="fragment_home_good_morning">Good morning</string>
+    <string name="fragment_home_search">Search...</string>
+    <string name="fragment_home_categories">Categories</string>
+    <string name="show_all">Show all</string>
+    <string name="item_category_count">%d items</string>
+    <string name="fragment_item_product_discount">%d%% OFF</string>
+    <string name="item_product_ratings_count">%d ratings</string>
+    <string name="price_striked">$%.1f</string>
+    <string name="error_loading">an error occured...</string>
+    <string name="retry">Retry\\n</string>
 </resources>
