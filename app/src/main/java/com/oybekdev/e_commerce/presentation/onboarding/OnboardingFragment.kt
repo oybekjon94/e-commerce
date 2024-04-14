@@ -1,4 +1,4 @@
-package com.oybekdev.e_commerce.presentation.sign_in.onboarding
+package com.oybekdev.e_commerce.presentation.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentOnboardingBinding
+import com.oybekdev.e_commerce.presentation.sign_in.onboarding.OnboardingFragmentDirections
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.oybekdev.e_commerce.presentation.sign_in.onboarding
+package com.oybekdev.e_commerce.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import com.oybekdev.e_commerce.domain.repo.AuthRepository
