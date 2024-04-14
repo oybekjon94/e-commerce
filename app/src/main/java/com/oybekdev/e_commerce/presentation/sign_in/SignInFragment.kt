@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentSignInBinding
+import com.oybekdev.e_commerce.presentation.sign_up.SignUpFragmentDirections
+import com.oybekdev.e_commerce.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,10 +22,9 @@ class SignInFragment : Fragment() {
     private val viewModel by viewModels<SignInViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        requireActivity().actionBar?.hide()
         binding = FragmentSignInBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -34,10 +36,11 @@ class SignInFragment : Fragment() {
         subscribeToLiveData()
     }
 
+
     private fun subscribeToLiveData() = with(binding) {
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            progress.isInvisible = isLoading
-            singInBtn.text = if(isLoading) null else getString(R.string.sign_in_button)
+            progress.isVisible = isLoading
+            singInBtn.text = if (isLoading) null else getString(R.string.sign_in_button)
         }
         viewModel.events.observe(viewLifecycleOwner) { event ->
             when (event) {
@@ -55,10 +58,11 @@ class SignInFragment : Fragment() {
         singInBtn.setOnClickListener {
             viewModel.signIn(username.text.toString(), password.text.toString())
         }
-    }
 
-    private fun toast(message: Int) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        singUp.setOnClickListener {
+            findNavController().navigate(SignInFragmentDirections.toSignUpFragment())
+
+        }
     }
 
 }
