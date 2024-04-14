@@ -5,10 +5,20 @@
     android:id="@+id/main"
     app:startDestination="@id/onboardingFragment">
 
+
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.oybekdev.e_commerce.presentation.sign_in.SignInFragment"
         android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+
+        <action
+            android:id="@+id/to_signUpFragment"
+            app:destination="@+id/signUpFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
         tools:layout="@layout/fragment_sign_in"
         />
 
@@ -21,7 +31,22 @@
 
         <action
             android:id="@+id/to_signInFragment"
-            app:destination="@id/signInFragment"/>
+            app:destination="@id/signInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.oybekdev.e_commerce.presentation.sign_up.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up" >
+
+
+    <action
+        android:id="@id/signInFragment"
+        app:destination="@id/signInFragment"
+        app:popUpTo="@id/signInFragment"
+        app:popUpToInclusive="true"/>
+
     </fragment>
 
 </navigation>

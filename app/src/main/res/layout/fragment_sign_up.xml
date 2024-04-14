@@ -7,7 +7,6 @@
 
 
     <ImageView
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/background_sing_in"
@@ -51,19 +50,8 @@
         android:text="@string/fragment_sign_in_title"
         android:textColor="@color/dark"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/description" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginBottom="27dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/fragment_sign_in_description"
-        android:textColor="@color/soft_gray"
-        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/userNameLayout" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameLayout"
@@ -74,16 +62,13 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:endIconTint="@color/orange"
-
-
-        app:layout_constraintBottom_toTopOf="@id/passwordLayout"
+        app:layout_constraintBottom_toTopOf="@id/emailLayout"
         app:startIconDrawable="@drawable/ic_user"
         app:startIconTint="@color/soft_gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:background="@drawable/input_field_background"
             android:fontFamily="@font/medium"
@@ -93,6 +78,30 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="18dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconTint="@color/orange"
+        app:layout_constraintBottom_toTopOf="@id/passwordLayout"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/soft_gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_field_background"
+            android:fontFamily="@font/medium"
+            android:hint="       Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/dark"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordLayout"
@@ -104,7 +113,7 @@
         app:boxStrokeWidthFocused="0dp"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/orange"
-        app:layout_constraintBottom_toTopOf="@id/singInBtn"
+        app:layout_constraintBottom_toTopOf="@id/register"
         app:startIconDrawable="@drawable/ic_lock"
         app:startIconTint="@color/soft_gray">
 
@@ -128,41 +137,36 @@
         android:indeterminateTint="@color/white"
         android:indeterminateTintMode="src_atop"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/singInBtn"
-        app:layout_constraintEnd_toEndOf="@id/singInBtn"
-        app:layout_constraintStart_toStartOf="@id/singInBtn"
-        app:layout_constraintTop_toTopOf="@id/singInBtn" />
-
+        app:layout_constraintBottom_toBottomOf="@id/register"
+        app:layout_constraintEnd_toEndOf="@id/register"
+        app:layout_constraintStart_toStartOf="@id/register"
+        app:layout_constraintTop_toTopOf="@id/register" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/singInBtn"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="76dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_backgraund"
         android:fontFamily="@font/extra_bold"
-        android:text="@string/sign_in_button"
+        android:text="@string/sign_up_register"
         android:textSize="16sp"
         app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@id/forgot"
+        app:layout_constraintBottom_toTopOf="@id/terms"
         app:layout_goneMarginBottom="19dp" />
 
-    <com.google.android.material.button.MaterialButton
-
-        android:id="@+id/forgot"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/terms"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="42dp"
-        android:fontFamily="@font/semi_bold"
-        android:text="@string/forgot_password"
-        android:textAllCaps="false"
-        android:textColor="@color/orange"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/medium"
+        android:text="@string/fragment_sign_up_terms_and_conditions"
+        android:textColor="@color/soft_gray"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/sign_up_text"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/sign_up_text" />
 
     <TextView
         android:id="@+id/sign_up_text"
@@ -170,23 +174,23 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/dont_account"
+        android:text="@string/sign_up_have_account"
         android:textColor="@color/soft_gray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/singUp"
+        app:layout_constraintEnd_toStartOf="@id/singIn"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/singUp"
+        android:id="@+id/singIn"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/semi_bold"
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
-        android:text="@string/sign_up"
+        android:text="@string/fragment_sign_up_sign_in"
         android:textAllCaps="false"
         android:textColor="@color/orange"
         android:textSize="16dp"
