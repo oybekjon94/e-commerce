@@ -36,8 +36,8 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun destinationFlow() = channelFlow {
-        suspend fun sendDestination(){
-            when{
+        suspend fun sendDestination() {
+            when {
                 tokenStore.get() != null -> send(Destination.Home)
                 onboardedStore.get() == true -> send(Destination.Auth)
                 else -> send(Destination.Onboarding)
@@ -54,6 +54,8 @@ class AuthRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun onboarded() = onboardedStore.set(true)
 
     private suspend fun saveUserInfo(response: AuthResponse) {
         tokenStore.set(response.token)
