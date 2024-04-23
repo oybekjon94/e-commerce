@@ -1,6 +1,7 @@
 package com.oybekdev.e_commerce.data.repo
 
 import com.oybekdev.e_commerce.data.api.product.ProductApi
+import com.oybekdev.e_commerce.data.api.product.dto.Category
 import com.oybekdev.e_commerce.data.api.product.dto.HomeResponse
 import com.oybekdev.e_commerce.data.store.UserStore
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
@@ -15,5 +16,7 @@ class ProductRepositoryImpl @Inject constructor(
         userStore.set(response.user)
         return response
     }
+
+    override suspend fun getCategories() = productApi.getCategories()
 
 }

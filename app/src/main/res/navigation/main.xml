@@ -35,7 +35,18 @@
         android:id="@+id/homeFragment"
         android:name="com.oybekdev.e_commerce.presentation.home.HomeFragment"
         android:label="homeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/to_categoriesFragment"
+            app:destination="@id/categoriesFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.oybekdev.e_commerce.presentation.categories.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_categories"/>
 
     <fragment
         android:id="@+id/signUpFragment"
