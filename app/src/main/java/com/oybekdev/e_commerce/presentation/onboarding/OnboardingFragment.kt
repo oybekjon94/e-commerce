@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentOnboardingBinding
+import com.oybekdev.e_commerce.util.clearLightStatusBar
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,9 @@ private val viewModel by viewModels<OnBoardingViewModel>()
     }
 
     private fun initUi() = with(binding) {
+        //clearStatusBar
+        clearLightStatusBar()
+
         pager.adapter = adapter
 
         indicatorView.apply {

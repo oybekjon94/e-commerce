@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentSignInBinding
 import com.oybekdev.e_commerce.presentation.sign_up.SignUpFragmentDirections
+import com.oybekdev.e_commerce.util.clearLightStatusBar
 import com.oybekdev.e_commerce.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,6 +56,9 @@ class SignInFragment : Fragment() {
     }
 
     private fun initUi() = with(binding) {
+        //for clearLighStatusBar
+        clearLightStatusBar()
+
         singInBtn.setOnClickListener {
             viewModel.signIn(username.text.toString(), password.text.toString())
         }

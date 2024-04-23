@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.oybekdev.e_commerce.R
@@ -20,6 +21,7 @@ import com.oybekdev.e_commerce.presentation.home.adapters.BannerAdapter
 import com.oybekdev.e_commerce.presentation.home.adapters.HomeCategoryAdapter
 import com.oybekdev.e_commerce.presentation.home.adapters.SectionAdapter
 import com.oybekdev.e_commerce.util.HorizontalMarginItemDecoration
+import com.oybekdev.e_commerce.util.setLightStatusBar
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +49,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun initUi() = with(binding) {
+        //for LightStatusBar
+        setLightStatusBar()
+
         error.retry.setOnClickListener {
             viewModel.getHome()
         }
@@ -79,6 +84,10 @@ class HomeFragment : Fragment() {
             R.dimen.viewpager_current_item_horizontal_margin
         )
         banners.addItemDecoration(itemDecoration)
+
+        showAll.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.toCategoriesFragment())
+        }
 
     }
 
@@ -116,6 +125,7 @@ class HomeFragment : Fragment() {
                 this@HomeFragment::onClickProduct,
                 this@HomeFragment::like
             )
+            count.text = it.notificationCount.toString()
         }
     }
 

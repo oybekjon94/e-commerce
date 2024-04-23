@@ -37,4 +37,6 @@
     <string name="price_striked">$%.1f</string>
     <string name="error_loading">an error occured...</string>
     <string name="retry">Retry\n</string>
+    <string name="fragment_categories_title">Categories</string>
+    <string name="item_category_counts">%d items</string>
 </resources>
