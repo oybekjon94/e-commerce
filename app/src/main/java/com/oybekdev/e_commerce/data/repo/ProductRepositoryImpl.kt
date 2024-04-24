@@ -26,8 +26,8 @@ class ProductRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCategories() = productApi.getCategories()
-    override suspend fun getProducts(query: ProductQuery) = Pager(
-        config = PagingConfig(pageSize = 10, prefetchDistance = 10, enablePlaceholders = false, initialLoadSize = 2),
+    override fun getProducts(query: ProductQuery) = Pager(
+        config = PagingConfig(pageSize = 10, prefetchDistance = 10, enablePlaceholders = false, initialLoadSize = 20),
         initialKey = 0,
         pagingSourceFactory = {
             ProductPagingSource(productApi, query)

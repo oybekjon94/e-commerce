@@ -3,6 +3,8 @@ package com.oybekdev.e_commerce.presentation.products
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.oybekdev.e_commerce.data.api.product.dto.Category
 import com.oybekdev.e_commerce.data.api.product.dto.Product
@@ -26,11 +28,15 @@ class ProductViewModel @Inject constructor(
         getProducts()
     }
 
-    private fun getProducts() {
+    fun getProducts() {
         val query = ProductQuery(category = category.value)
         val products = productRepository.getProducts(query)
         this.products.addSource(products){
             this.products.postValue(it)
         }
+    }
+    fun setLoadStates(states:CombinedLoadStates){
+        val loading = states.source.refresh is LoadState.Loading
+        this.loading.postValue(loading)
     }
 }

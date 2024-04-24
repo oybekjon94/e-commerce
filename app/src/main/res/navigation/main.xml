@@ -40,13 +40,33 @@
         <action
             android:id="@+id/to_categoriesFragment"
             app:destination="@id/categoriesFragment"/>
+
+        <action
+            android:id="@+id/to_productsFragment"
+            app:destination="@+id/productsFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.oybekdev.e_commerce.presentation.categories.CategoriesFragment"
         android:label="CategoriesFragment"
-        tools:layout="@layout/fragment_categories"/>
+        tools:layout="@layout/fragment_categories">
+
+        <action
+            android:id="@+id/to_productsFragment"
+            app:destination="@+id/productsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.oybekdev.e_commerce.presentation.products.ProductsFragment"
+        android:label="ProductsFragment"
+        tools:layout="@layout/fragment_products">
+
+        <argument
+            android:name="category"
+            app:argType="com.oybekdev.e_commerce.data.api.product.dto.Category"/>
+    </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"

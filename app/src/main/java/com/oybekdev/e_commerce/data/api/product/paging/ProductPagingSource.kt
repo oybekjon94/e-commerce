@@ -24,8 +24,8 @@ class ProductPagingSource(
 
             LoadResult.Page(
                 data = products,
-                prevKey = params.key?.let { it-1 },
-                nextKey = if (products.size == params.loadSize)key +1 else null
+                prevKey = params.key?.let { it-1 }?.takeIf { it>0 },
+                nextKey = if (products.isNotEmpty())key +1 else null
             )
         }catch (e:Exception){
             LoadResult.Error(e)
