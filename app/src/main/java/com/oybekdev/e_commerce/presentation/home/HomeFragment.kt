@@ -134,7 +134,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCategoryClick(category: Category) {
-
+        findNavController().navigate(HomeFragmentDirections.toProductsFragment(category))
     }
 
     private fun showAll(section: Section) {

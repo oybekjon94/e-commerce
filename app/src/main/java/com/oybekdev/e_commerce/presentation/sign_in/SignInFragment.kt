@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentSignInBinding
+import com.oybekdev.e_commerce.presentation.sign_in.SignInFragmentDirections
 import com.oybekdev.e_commerce.presentation.sign_up.SignUpFragmentDirections
 import com.oybekdev.e_commerce.util.clearLightStatusBar
 import com.oybekdev.e_commerce.util.toast

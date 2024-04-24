@@ -53,7 +53,7 @@ class CategoriesFragment:Fragment() {
     }
 
     private fun onCategoryClick(category:Category){
-
+        findNavController().navigate(CategoriesFragmentDirections.toProductsFragment(category))
     }
 
 }
