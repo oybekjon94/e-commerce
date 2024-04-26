@@ -3,6 +3,7 @@ package com.oybekdev.e_commerce.presentation.products
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -11,6 +12,8 @@ import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +23,7 @@ class ProductViewModel @Inject constructor(
 
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
-    val products = MediatorLiveData<PagingData<Product>>()
+    val products = MutableLiveData<PagingData<Product>>()
     val category = MutableLiveData<Category>()
 
     fun setCategory(category:Category){
@@ -28,12 +31,12 @@ class ProductViewModel @Inject constructor(
         getProducts()
     }
 
-    fun getProducts() {
+    fun getProducts() = viewModelScope.launch{
         val query = ProductQuery(category = category.value)
-        val products = productRepository.getProducts(query)
-        this.products.addSource(products){
-            this.products.postValue(it)
+        productRepository.getProducts(query).collectLatest {
+            products.postValue(it)
         }
+
     }
     fun setLoadStates(states:CombinedLoadStates){
         val loading = states.source.refresh is LoadState.Loading

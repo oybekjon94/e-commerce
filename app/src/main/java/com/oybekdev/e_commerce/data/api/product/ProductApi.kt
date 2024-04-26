@@ -17,6 +17,7 @@ interface ProductApi {
     @GET("products")
     suspend fun getProducts(
         @Query("category_id")categoryId:String?,
+        @Query("search")search:String?,
         @Query("page")page:Int,
         @Query("size")size:Int
     ):List<Product>

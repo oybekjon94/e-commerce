@@ -12,6 +12,7 @@ import com.oybekdev.e_commerce.domain.repo.AuthRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -53,7 +54,8 @@ class AuthRepositoryImpl @Inject constructor(
                 sendDestination()
             }
         }
-    }
+    }.distinctUntilChanged() //for example, if home comes twice, it will not transfer
+    // the second one, that is, until it changes
 
     override suspend fun onboarded() = onboardedStore.set(true)
 
