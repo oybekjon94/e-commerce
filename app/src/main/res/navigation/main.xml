@@ -88,6 +88,9 @@
             app:nullable="true"
             android:defaultValue="@null"
             />
+        <action
+            android:id="@+id/to_filterFragment"
+            app:destination="@id/filterFragment"/>
     </fragment>
 
     <fragment
@@ -120,5 +123,15 @@
         app:destination="@id/homeFragment"
         app:popUpTo="@id/main"/>
 
+    <fragment
+        android:id="@+id/filterFragment"
+        tools:layout="@layout/fragment_filter"
+        android:name="com.oybekdev.e_commerce.presentation.filter.FilterFragment"
+        android:label="FilterFragment">
+
+        <argument
+            android:name="filter"
+            app:argType="com.oybekdev.e_commerce.domain.model.ProductQuery"/>
+    </fragment>
 
 </navigation>

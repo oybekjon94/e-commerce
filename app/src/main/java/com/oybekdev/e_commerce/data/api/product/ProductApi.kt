@@ -19,6 +19,11 @@ interface ProductApi {
         @Query("category_id")categoryId:String?,
         @Query("search")search:String?,
         @Query("page")page:Int,
-        @Query("size")size:Int
+        @Query("size")size:Int,
+        @Query("from")from:Float?,
+        @Query("to")to:Float?,
+        @Query("rating")rating:Int?,
+        @Query("discount")discount:Int?,
+        @Query("sort")sort:String?
     ):List<Product>
 }
