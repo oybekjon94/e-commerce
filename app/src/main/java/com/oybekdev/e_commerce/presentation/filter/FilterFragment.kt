@@ -16,28 +16,19 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.data.api.product.dto.Category
+import com.oybekdev.e_commerce.databinding.FragmentDetailBinding
 import com.oybekdev.e_commerce.databinding.FragmentFilterBinding
 import com.oybekdev.e_commerce.databinding.ItemRadioGroupBinding
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.domain.model.Sort
+import com.oybekdev.e_commerce.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilterFragment:Fragment() {
+class FilterFragment: BaseFragment<FragmentFilterBinding>(FragmentFilterBinding::inflate) {
 
-    private lateinit var binding:FragmentFilterBinding
     private val viewModel by viewModels<FilterViewModel>()
     private val args by navArgs<FilterFragmentArgs>()
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFilterBinding.inflate(inflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

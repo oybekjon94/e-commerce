@@ -67,4 +67,9 @@
     <string name="fragment_related_product">Related product</string>
     <string name="fragment_product_add">ADD TO CART</string>
     <string name="fragment_detail_share_title">Share</string>
+    <string name="navigation_title_home">Home</string>
+    <string name="navigation_title_order">Orders</string>
+    <string name="navigation_title_card">Card</string>
+    <string name="navigation_title_wishlist">Wishlist</string>
+    <string name="navigation_title_profile">Profile</string>
 </resources>

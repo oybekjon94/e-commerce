@@ -24,14 +24,14 @@ import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import com.oybekdev.e_commerce.presentation.search.SearchFragmentDirections.toFilterFragment
 import com.oybekdev.e_commerce.presentation.search.adapters.RecentAdapter
 import com.oybekdev.e_commerce.presentation.search.adapters.SearchProductsAdapter
+import com.oybekdev.e_commerce.util.BaseFragment
 import com.oybekdev.e_commerce.util.hideKeyboard
 import com.oybekdev.e_commerce.util.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchFragment : Fragment() {
-    private lateinit var binding: FragmentSearchBinding
+class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
     private val viewModel by viewModels<SearchViewModel>()
     private val args by navArgs<SearchFragmentArgs>()
     private val adapter by lazy { SearchProductsAdapter(this::onProductClick, this::like) }
@@ -44,15 +44,6 @@ class SearchFragment : Fragment() {
         adapter.addLoadStateListener {
             viewModel.setLoadState(it)
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        binding = FragmentSearchBinding.inflate(inflater)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

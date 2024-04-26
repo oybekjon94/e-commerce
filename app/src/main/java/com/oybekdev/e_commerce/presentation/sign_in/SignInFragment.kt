@@ -13,23 +13,15 @@ import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentSignInBinding
 import com.oybekdev.e_commerce.presentation.sign_in.SignInFragmentDirections
 import com.oybekdev.e_commerce.presentation.sign_up.SignUpFragmentDirections
+import com.oybekdev.e_commerce.util.BaseFragment
 import com.oybekdev.e_commerce.util.clearLightStatusBar
 import com.oybekdev.e_commerce.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignInFragment : Fragment() {
+class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding::inflate) {
 
-    private lateinit var binding: FragmentSignInBinding
     private val viewModel by viewModels<SignInViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        requireActivity().actionBar?.hide()
-        binding = FragmentSignInBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

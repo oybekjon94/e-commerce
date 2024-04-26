@@ -17,15 +17,15 @@ import com.oybekdev.e_commerce.common.Constants
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentDetailBinding
 import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
+import com.oybekdev.e_commerce.util.BaseFragment
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.min
 
 @AndroidEntryPoint
-class DetailFragment:Fragment() {
+class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 
-    private lateinit var binding:FragmentDetailBinding
     private val viewModel by viewModels<DetailViewModel>()
     private val args by navArgs<DetailFragmentArgs>()
 
@@ -33,15 +33,6 @@ class DetailFragment:Fragment() {
         super.onCreate(savedInstanceState)
 
         viewModel.getProduct(args.id)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentDetailBinding.inflate(inflater)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

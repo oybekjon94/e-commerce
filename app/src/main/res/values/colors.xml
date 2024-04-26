@@ -9,5 +9,5 @@
     <color name="dark_text">#303733</color>
     <color name="indicator_unchecked">#BFC9DA</color>
     <color name="indicator_checked">#F97941</color>
-
+    <color name="gray">#BFC9DA</color>
 </resources>
