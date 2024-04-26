@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.oybekdev.e_commerce.data.api.product.ProductApi
+import com.oybekdev.e_commerce.data.api.product.dto.Detail
 import com.oybekdev.e_commerce.data.api.product.dto.HomeResponse
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.data.api.product.paging.ProductPagingSource
@@ -52,5 +53,7 @@ class ProductRepositoryImpl @Inject constructor(
         recents.add(0,search )
         recentsStore.set(recents.toTypedArray())
     }
+
+    override suspend fun getProduct(id: String)= productApi.getProduct(id)
 
 }
