@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.oybekdev.e_commerce.data.api.product.dto.Category
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.domain.model.ProductQuery
@@ -25,7 +26,7 @@ class SearchViewModel @Inject constructor(
 
     val loading = MutableLiveData(false)
     val products = MutableLiveData<PagingData<Product>>()
-    private val query = MutableLiveData(ProductQuery())
+    val query = MutableLiveData(ProductQuery())
     val recents = MutableLiveData<List<String>>()
 
     //It keeps coming when we change it in the store
@@ -34,7 +35,7 @@ class SearchViewModel @Inject constructor(
     }
 
     private fun getProducts() =  viewModelScope.launch{
-        productRepository.getProducts(query.value!!).collect {
+        productRepository.getProducts(query.value!!).cachedIn(viewModelScope).collect {
             products.postValue(it)
         }
     }
@@ -64,5 +65,9 @@ class SearchViewModel @Inject constructor(
     }
     private fun addRecent(search:String) = viewModelScope.launch{
         productRepository.addRecents(search)
+    }
+    fun setQuery(query:ProductQuery){
+        this.query.postValue(query)
+        getProducts()
     }
 }

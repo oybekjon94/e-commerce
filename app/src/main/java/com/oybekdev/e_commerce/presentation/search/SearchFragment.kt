@@ -8,6 +8,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,6 +18,9 @@ import androidx.paging.PagingData
 import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentSearchBinding
+import com.oybekdev.e_commerce.domain.model.ProductQuery
+import com.oybekdev.e_commerce.presentation.filter.FilterFragment
+import com.oybekdev.e_commerce.presentation.search.SearchFragmentDirections.toFilterFragment
 import com.oybekdev.e_commerce.presentation.search.adapters.RecentAdapter
 import com.oybekdev.e_commerce.presentation.search.adapters.SearchProductsAdapter
 import com.oybekdev.e_commerce.util.hideKeyboard
@@ -24,25 +29,26 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchFragment:Fragment() {
-    private lateinit var binding:FragmentSearchBinding
+class SearchFragment : Fragment() {
+    private lateinit var binding: FragmentSearchBinding
     private val viewModel by viewModels<SearchViewModel>()
     private val args by navArgs<SearchFragmentArgs>()
-    private val adapter by lazy { SearchProductsAdapter(this::onProductClick,this::like) }
+    private val adapter by lazy { SearchProductsAdapter(this::onProductClick, this::like) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        args.category?.let { viewModel.setCategory(it)}
+        args.category?.let { viewModel.setCategory(it) }
 
         adapter.addLoadStateListener {
             viewModel.setLoadState(it)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater)
         return binding.root
@@ -56,17 +62,17 @@ class SearchFragment:Fragment() {
     }
 
     private fun subscribeToLiveData() = with(binding) {
-        viewModel.loading.observe(viewLifecycleOwner){
+        viewModel.loading.observe(viewLifecycleOwner) {
             loadingLayout.root.isVisible = it
         }
-        viewModel.products.observe(viewLifecycleOwner){
+        viewModel.products.observe(viewLifecycleOwner) {
             viewLifecycleOwner.lifecycleScope.launch {
                 adapter.submitData(it ?: PagingData.empty())
             }
         }
-        viewModel.recents.observe(viewLifecycleOwner){
-            recents.adapter = RecentAdapter(it,this@SearchFragment::onRecentClick)
-           isRecentsVisible(searchContainer.search.hasFocus())
+        viewModel.recents.observe(viewLifecycleOwner) {
+            recents.adapter = RecentAdapter(it, this@SearchFragment::onRecentClick)
+            isRecentsVisible(searchContainer.search.hasFocus())
         }
     }
 
@@ -80,7 +86,7 @@ class SearchFragment:Fragment() {
         products.adapter = adapter
 
         searchContainer.search.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH){
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.setSearch(searchContainer.search.text.toString())
 
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -95,11 +101,23 @@ class SearchFragment:Fragment() {
         })
 
         //it is visible when focused or not
-        searchContainer.search.setOnFocusChangeListener{view, focused ->
+        searchContainer.search.setOnFocusChangeListener { _, focused ->
             isRecentsVisible(focused)
         }
         clear.setOnClickListener {
             viewModel.clearRecents()
+        }
+        searchContainer.filter.setOnClickListener {
+            val query = viewModel.query.value ?: ProductQuery()
+            findNavController().navigate(toFilterFragment(query))
+        }
+        //get for the result
+        setFragmentResultListener(FilterFragment.REQUEST_KEY) { _, result ->
+            val query = result.getParcelable < ProductQuery>(FilterFragment.RESULT_KEY)
+            viewModel.setQuery(query?: return@setFragmentResultListener)
+            searchContainer.search.clearFocus()
+            hideKeyboard()
+            isRecentsVisible(false)
         }
     }
 
@@ -109,13 +127,16 @@ class SearchFragment:Fragment() {
         }
     }
 
-    private fun onProductClick(product:Product){
+    private fun onProductClick(product: Product) {
 
     }
-    private fun like(product:Product){
+
+    private fun like(product: Product) {
 
     }
-    private fun onRecentClick(recent:String){
 
+    private fun onRecentClick(recent: String) {
+        viewModel.setSearch(recent)
+        binding.searchContainer.search.setText(recent)
     }
 }
