@@ -16,10 +16,12 @@ import com.oybekdev.e_commerce.data.api.product.dto.Banner
 import com.oybekdev.e_commerce.data.api.product.dto.Category
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.data.api.product.dto.Section
+import com.oybekdev.e_commerce.databinding.FragmentDetailBinding
 import com.oybekdev.e_commerce.databinding.FragmentHomeBinding
 import com.oybekdev.e_commerce.presentation.home.adapters.BannerAdapter
 import com.oybekdev.e_commerce.presentation.home.adapters.HomeCategoryAdapter
 import com.oybekdev.e_commerce.presentation.home.adapters.SectionAdapter
+import com.oybekdev.e_commerce.util.BaseFragment
 import com.oybekdev.e_commerce.util.HorizontalMarginItemDecoration
 import com.oybekdev.e_commerce.util.setLightStatusBar
 import com.zhpan.indicator.enums.IndicatorSlideMode
@@ -27,19 +29,9 @@ import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

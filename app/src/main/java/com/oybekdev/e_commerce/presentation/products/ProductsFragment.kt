@@ -13,12 +13,12 @@ import androidx.navigation.fragment.navArgs
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentProductsBinding
 import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
+import com.oybekdev.e_commerce.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ProductsFragment:Fragment() {
-    private lateinit var binding:FragmentProductsBinding
+class ProductsFragment:BaseFragment<FragmentProductsBinding>(FragmentProductsBinding::inflate) {
     private val viewModel by viewModels<ProductViewModel>()
     private val args by navArgs<ProductsFragmentArgs>()
 
@@ -35,15 +35,6 @@ class ProductsFragment:Fragment() {
         adapter.addLoadStateListener {
             viewModel.setLoadStates(it)
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentProductsBinding.inflate(inflater)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

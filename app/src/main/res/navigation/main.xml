@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@id/onboardingFragment">
+    app:startDestination="@id/homeFragment">
 
 
     <fragment
@@ -166,5 +166,35 @@
             android:id="@+id/to_detailFragment"
             app:destination="@id/detailFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders"
+        android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
+
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders"
+        android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
+
+    <fragment
+        android:id="@+id/cardFragment"
+        android:label="CardFragment"
+        tools:layout="@layout/fragment_card"
+        android:name="com.oybekdev.e_commerce.presentation.card.CardFragment"/>
+
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:label="WishlistFragment"
+        tools:layout="@layout/fragment_wishlist"
+        android:name="com.oybekdev.e_commerce.presentation.wishlist.WishlistFragment"/>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.oybekdev.e_commerce.presentation.profile.ProfileFragment"/>
 
 </navigation>

@@ -10,25 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.databinding.FragmentSignUpBinding
+import com.oybekdev.e_commerce.util.BaseFragment
 import com.oybekdev.e_commerce.util.clearLightStatusBar
 import com.oybekdev.e_commerce.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
 
-    private lateinit var binding: FragmentSignUpBinding
     private val viewModel by viewModels<SignUpViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        requireActivity().actionBar?.hide()
-        binding = FragmentSignUpBinding.inflate(inflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
