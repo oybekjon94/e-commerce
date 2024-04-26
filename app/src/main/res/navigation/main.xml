@@ -48,6 +48,10 @@
         <action
             android:id="@+id/to_searchFragment"
             app:destination="@id/searchFragment"/>
+
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
     <fragment
@@ -59,6 +63,9 @@
         <action
             android:id="@+id/to_productsFragment"
             app:destination="@+id/productsFragment"/>
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
     <fragment
@@ -74,6 +81,9 @@
         <action
             android:id="@+id/to_searchFragment"
             app:destination="@id/searchFragment"/>
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
     <fragment
@@ -91,6 +101,9 @@
         <action
             android:id="@+id/to_filterFragment"
             app:destination="@id/filterFragment"/>
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
     <fragment
@@ -132,6 +145,26 @@
         <argument
             android:name="filter"
             app:argType="com.oybekdev.e_commerce.domain.model.ProductQuery"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        tools:layout="@layout/fragment_detail"
+        android:name="com.oybekdev.e_commerce.presentation.detail.DetailFragment"
+        android:label="DetailFragment">
+
+        <deepLink
+            android:autoVerify="true"
+            app:uri="https://9d690745-ea7d-4b3d-a54d-a14e4a2c9ffb.mock.pstmn.io/products/{id}"/>
+
+
+        <argument
+            android:name="id"
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
 </navigation>

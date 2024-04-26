@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentProductsBinding
+import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -81,7 +82,7 @@ class ProductsFragment:Fragment() {
     }
 
     private fun onClick(product:Product){
-
+        findNavController().navigate(ProductsFragmentDirections.toDetailFragment(product.id))
     }
     private fun like(product:Product){
 

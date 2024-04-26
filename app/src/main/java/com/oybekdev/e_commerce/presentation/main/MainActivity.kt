@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo(destination: Destination) {
+        if (navController.currentDestination?.id == R.id.detailFragment) return
         when (destination) {
             Destination.Auth -> navController.navigate(MainDirections.tooSignInFragment())
             Destination.Home -> navController.navigate(MainDirections.toHomeFragment())

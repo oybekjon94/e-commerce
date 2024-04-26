@@ -20,6 +20,7 @@ import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentSearchBinding
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.presentation.filter.FilterFragment
+import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import com.oybekdev.e_commerce.presentation.search.SearchFragmentDirections.toFilterFragment
 import com.oybekdev.e_commerce.presentation.search.adapters.RecentAdapter
 import com.oybekdev.e_commerce.presentation.search.adapters.SearchProductsAdapter
@@ -132,7 +133,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun like(product: Product) {
-
+        findNavController().navigate(SearchFragmentDirections.toDetailFragment(product.id))
     }
 
     private fun onRecentClick(recent: String) {
