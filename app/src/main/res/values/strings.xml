@@ -39,4 +39,8 @@
     <string name="retry">Retry\n</string>
     <string name="fragment_categories_title">Categories</string>
     <string name="item_category_counts">%d items</string>
+    <string name="fragment_search_title">Search</string>
+    <string name="fragment_search_recent">Recent search</string>
+    <string name="clear_all">Clear All</string>
+    <string name="fragment_search_result">Search Result</string>
 </resources>

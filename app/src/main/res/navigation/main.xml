@@ -44,6 +44,10 @@
         <action
             android:id="@+id/to_productsFragment"
             app:destination="@+id/productsFragment"/>
+
+        <action
+            android:id="@+id/to_searchFragment"
+            app:destination="@id/searchFragment"/>
     </fragment>
 
     <fragment
@@ -66,6 +70,24 @@
         <argument
             android:name="category"
             app:argType="com.oybekdev.e_commerce.data.api.product.dto.Category"/>
+
+        <action
+            android:id="@+id/to_searchFragment"
+            app:destination="@id/searchFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.oybekdev.e_commerce.presentation.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+
+        <argument
+            android:name="category"
+            app:argType="com.oybekdev.e_commerce.data.api.product.dto.Category"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
     </fragment>
 
     <fragment

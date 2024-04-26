@@ -89,6 +89,11 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.toCategoriesFragment())
         }
 
+        searchContainer.search.setOnFocusChangeListener { view, focused ->
+            if (focused.not()) return@setOnFocusChangeListener
+            findNavController().navigate(HomeFragmentDirections.toSearchFragment())
+        }
+
     }
 
     private fun subscribeToLiveData() = with(binding) {
