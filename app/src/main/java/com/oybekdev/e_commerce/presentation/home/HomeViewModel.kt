@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val productRepository: ProductRepository
@@ -17,7 +18,6 @@ class HomeViewModel @Inject constructor(
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
     val home = MutableLiveData<HomeResponse?>(null)
-
     init {
         getHome()
     }

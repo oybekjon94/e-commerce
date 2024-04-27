@@ -173,11 +173,6 @@
         tools:layout="@layout/fragment_orders"
         android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
 
-    <fragment
-        android:id="@+id/ordersFragment"
-        android:label="OrdersFragment"
-        tools:layout="@layout/fragment_orders"
-        android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
 
     <fragment
         android:id="@+id/cardFragment"

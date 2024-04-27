@@ -13,6 +13,13 @@ import okio.IOException
 import retrofit2.HttpException
 import javax.inject.Inject
 
+/**
+ * SingleLiveEvent is used to emit events that should be observed only once.
+It's particularly useful for scenarios where you want to trigger a UI action or
+navigation event (such as showing a toast message or navigating to another screen) and
+ensure that it's consumed by only one observer, even if multiple observers are active at the
+time of emission
+ */
 @HiltViewModel
 class SignInViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {

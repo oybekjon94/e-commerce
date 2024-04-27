@@ -25,6 +25,7 @@ class SearchViewModel @Inject constructor(
 ) :ViewModel(){
 
     val loading = MutableLiveData(false)
+    //It holds the data fetched from the repository, using the Paging library's PagingData type.
     val products = MutableLiveData<PagingData<Product>>()
     val query = MutableLiveData(ProductQuery())
     val recents = MutableLiveData<List<String>>()
@@ -49,7 +50,7 @@ class SearchViewModel @Inject constructor(
         addRecent(search)
         getProducts()
     }
-
+//CombinedLoadStates object as a parameter, representing the combined loading states of different data sources.
     fun setLoadState(states:CombinedLoadStates){
         val loading = states.source.refresh is LoadState.Loading
         this.loading.postValue(loading)

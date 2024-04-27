@@ -9,7 +9,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductApi {
-
     @GET("home")
     suspend fun getHome():HomeResponse
 

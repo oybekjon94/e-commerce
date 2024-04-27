@@ -38,7 +38,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
         }
         viewModel.events.observe(viewLifecycleOwner) { event ->
             when (event) {
-
                 SignInViewModel.Event.ConnectionError -> toast(R.string.connection_error)
                 SignInViewModel.Event.Error -> toast(R.string.error)
                 SignInViewModel.Event.InvalidCredentials -> toast(R.string.invalid_credentials)
