@@ -1,14 +1,11 @@
 package com.oybekdev.e_commerce.presentation.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -16,12 +13,10 @@ import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.common.Constants
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentDetailBinding
-import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import com.oybekdev.e_commerce.util.BaseFragment
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.min
 
 @AndroidEntryPoint
 class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
@@ -52,7 +47,7 @@ class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::
             setButtonVisibility()
         }
         viewModel.detail.observe(viewLifecycleOwner){
-            val color = if (it.favorite) R.color.orange else R.color.dark
+            val color = if (it.wishlist) R.color.orange else R.color.dark
             val resolved = ResourcesCompat.getColor(resources,color,null)
             favorite.setColorFilter(resolved)
 
@@ -75,9 +70,13 @@ class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::
             description.text = it.description
 
             products.adapter = RelatedAdapter(it.related,this@DetailFragment::onClick)
+
         }
         viewModel.count.observe(viewLifecycleOwner){
             count.text = it.toString()
+        }
+        viewModel.wishlist.observe(viewLifecycleOwner){
+            setWishlist(it)
         }
     }
 
@@ -116,8 +115,18 @@ class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::
                 .setText(Constants.HOST + "products/${args.id}")
                 .startChooser()
         }
+
+        favorite.setOnClickListener {
+            viewModel.toggleWishlist()
+        }
     }
     private fun onClick(product:Product){
         findNavController().navigate(DetailFragmentDirections.toDetailFragment(product.id))
+    }
+
+    private fun setWishlist(wishlist:Boolean) = with(binding){
+        val color = if (wishlist)R.color.orange else R.color.dark
+        val resolved = ContextCompat.getColor(requireContext(),color)
+        favorite.setColorFilter(resolved)
     }
 }

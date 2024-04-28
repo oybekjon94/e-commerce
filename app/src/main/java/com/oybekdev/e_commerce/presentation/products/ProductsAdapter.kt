@@ -9,7 +9,7 @@ import com.oybekdev.e_commerce.databinding.ItemProductBinding
 
 class ProductsAdapter(
     private val onClick:(product:Product) -> Unit,
-    private val like:(product:Product) -> Unit
+    private val wishlist:(product:Product) -> Unit
 ) :PagingDataAdapter<Product,ProductViewHolder>(DIFF_UTIL){
 
     companion object{
@@ -22,7 +22,7 @@ class ProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(getItem(position) ?: return ,onClick,like)
+        holder.bind(getItem(position) ?: return ,onClick,wishlist)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ProductViewHolder(

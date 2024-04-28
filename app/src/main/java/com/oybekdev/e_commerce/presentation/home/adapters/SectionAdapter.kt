@@ -3,7 +3,6 @@ package com.oybekdev.e_commerce.presentation.home.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.data.api.product.dto.Section
 import com.oybekdev.e_commerce.data.api.product.dto.SectionType
@@ -14,7 +13,7 @@ class SectionAdapter(
     private val sections:List<Section>,
     private val showAll:(section:Section) -> Unit,
     private val onClick: (product:Product) -> Unit,
-    private val like: (product:Product) -> Unit
+    private val wishlist: (product:Product) -> Unit
 ) :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     inner class HorizontalHolder(private val binding:ItemSectionHorizontalBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(section: Section) = with(binding){
@@ -22,7 +21,7 @@ class SectionAdapter(
             showAll.setOnClickListener {
                 this@SectionAdapter.showAll(section)
             }
-            products.adapter = HorizontalAdapter(section.products,onClick,like)
+            products.adapter = HorizontalAdapter(section.products,onClick,wishlist)
         }
     }
     inner class VerticalHolder(private val binding:ItemSectionVerticalBinding):RecyclerView.ViewHolder(binding.root){
@@ -31,7 +30,7 @@ class SectionAdapter(
             showAll.setOnClickListener {
                 this@SectionAdapter.showAll(section)
             }
-            products.adapter = VerticalAdapter(section.products,onClick,like)
+            products.adapter = VerticalAdapter(section.products,onClick,wishlist)
         }
     }
 

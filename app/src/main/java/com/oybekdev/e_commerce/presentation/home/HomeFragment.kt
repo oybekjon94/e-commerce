@@ -129,7 +129,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 it.sections,
                 this@HomeFragment::showAll,
                 this@HomeFragment::onClickProduct,
-                this@HomeFragment::like
+                this@HomeFragment::wishlist
             )
             count.text = it.notificationCount.toString()
         }
@@ -151,7 +151,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         findNavController().navigate(HomeFragmentDirections.toDetailFragment(product.id))
     }
 
-    private fun like(product: Product) {
-
+    private fun wishlist(product: Product) {
+        viewModel.toggleWishlist(product)
     }
 }

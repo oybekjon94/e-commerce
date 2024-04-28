@@ -1,18 +1,14 @@
 package com.oybekdev.e_commerce.presentation.products
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentProductsBinding
-import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import com.oybekdev.e_commerce.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,7 +20,7 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding>(FragmentProductsBin
 
     //use when we need it
     private val adapter by lazy {
-        ProductsAdapter(this::onClick,this::like)
+        ProductsAdapter(this::onClick,this::wishlist)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +71,7 @@ class ProductsFragment:BaseFragment<FragmentProductsBinding>(FragmentProductsBin
     private fun onClick(product:Product){
         findNavController().navigate(ProductsFragmentDirections.toDetailFragment(product.id))
     }
-    private fun like(product:Product){
-
+    private fun wishlist(product:Product){
+        viewModel.toggleWishlist(product)
     }
 }

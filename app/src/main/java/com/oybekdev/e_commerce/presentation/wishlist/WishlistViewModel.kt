@@ -1,14 +1,12 @@
-package com.oybekdev.e_commerce.presentation.products
+package com.oybekdev.e_commerce.presentation.wishlist
 
-import androidx.datastore.preferences.core.preferencesOf
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
-import com.oybekdev.e_commerce.data.api.product.dto.Category
+import androidx.paging.cachedIn
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
@@ -18,37 +16,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor(
+class WishlistViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ):ViewModel(){
 
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
     val products = MutableLiveData<PagingData<Product>>()
-    val category = MutableLiveData<Category>()
 
-    fun setCategory(category:Category){
-        this.category.postValue(category)
+    init {
         getProducts()
     }
 
-    fun getProducts() = viewModelScope.launch{
-        val query = ProductQuery(category = category.value)
-        productRepository.getProducts(query).collectLatest {
+    fun getProducts() = viewModelScope.launch {
+        val query = ProductQuery(favorite = true)
+        productRepository.getProducts(query).cachedIn(viewModelScope).collectLatest {
             products.postValue(it)
         }
-
     }
-    fun setLoadStates(states:CombinedLoadStates){
+    fun setLoadStates(states: CombinedLoadStates){
         val loading = states.source.refresh is LoadState.Loading
         this.loading.postValue(loading)
-    }
-
-    fun toggleWishlist(product:Product) = viewModelScope.launch {
-        try {
-            productRepository.toggleWishlist(product.id, product.wishlist)
-        }catch (e:Exception){
-
-        }
     }
 }

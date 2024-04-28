@@ -10,6 +10,7 @@ import android.view.animation.DecelerateInterpolator
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.forEachIndexed
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
@@ -62,6 +63,16 @@ class MainActivity : AppCompatActivity() {
 
             NavigationUI.onNavDestinationSelected(it,navController)
             return@setOnItemSelectedListener true
+        }
+
+        //for navigation visible
+        navController.addOnDestinationChangedListener{_,destination, _ ->
+            navigation.isVisible = listOf(
+                R.id.onboardingFragment,
+                R.id.signInFragment,
+                R.id.signUpFragment,
+                R.id.detailFragment,
+            ).all{it != destination.id}
         }
     }
 

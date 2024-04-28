@@ -1,7 +1,5 @@
 package com.oybekdev.e_commerce.presentation.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,7 +12,6 @@ import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,8 +37,8 @@ class SearchViewModel @Inject constructor(
             products.postValue(it)
         }
     }
-    fun setCategory(category:Category){
-        query.postValue(query.value!!.copy(category = category))
+    fun setInitials(category:Category?, wishlist:Boolean){
+        query.postValue(query.value!!.copy(category = category, favorite = wishlist))
         getProducts()
     }
 

@@ -13,7 +13,7 @@ import kotlin.math.roundToInt
 class HorizontalAdapter(
     private val products: List<Product>,
     private val onClick: (product: Product) -> Unit,
-    private val like: (product: Product) -> Unit,
+    private val wishlist: (product: Product) -> Unit,
 ) : RecyclerView.Adapter<HorizontalAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemProductHorizontalSectionBinding) :
@@ -44,15 +44,15 @@ class HorizontalAdapter(
 
             fun setLike() {
                 val liked =
-                    if (product.favorite) R.drawable.ic_heart_checked else R.drawable.ic_heart_unchecked
+                    if (product.wishlist) R.drawable.ic_heart_checked else R.drawable.ic_heart_unchecked
                 like.setImageResource(liked)
             }
             setLike()
 
             like.setOnClickListener {
-                product.favorite = product.favorite.not()
+                product.wishlist = product.wishlist.not()
                 setLike()
-                like(product)
+                wishlist(product)
             }
         }
     }

@@ -17,6 +17,7 @@ class DetailViewModel @Inject constructor(
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
     val detail = MutableLiveData<Detail>()
+    val wishlist = MutableLiveData(false)
     val count = MutableLiveData(1)
 
     fun getProduct(id:String) = viewModelScope.launch {
@@ -25,6 +26,7 @@ class DetailViewModel @Inject constructor(
         try {
             val result = productRepository.getProduct(id)
             detail.postValue(result)
+            wishlist.postValue(result.wishlist)
         }catch (e:Exception){
             error.postValue(true)
         }finally {
@@ -45,6 +47,16 @@ class DetailViewModel @Inject constructor(
         if (current == 1)return
         current--
         count.postValue(current)
+    }
+
+    fun toggleWishlist() = viewModelScope.launch{
+        val wishlistValue = wishlist.value ?: return@launch
+        wishlist.postValue(wishlistValue.not())
+        try {
+            productRepository.toggleWishlist(detail.value!!.id, wishlistValue.not())
+        }catch (e:Exception){
+
+        }
     }
 
 }

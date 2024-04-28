@@ -24,6 +24,7 @@ class ProductPagingSource(
                 rating = query.rating,
                 discount = query.discount,
                 sort = query.sort.joinToString(),
+                favorite = query.favorite,
                 page = key,
                 size = params.loadSize
             )
