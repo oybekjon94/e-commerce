@@ -28,6 +28,13 @@ import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+* viewLifecycleOwner -> When observing LiveData within a fragment, it's essential to use the appropriate
+* lifecycle owner to ensure that observers are active only when the fragment's view
+* is in the STARTED or RESUMED state. Using viewLifecycleOwner ensures that observers
+* are automatically removed when the fragment's view is destroyed, preventing potential
+* memory leaks or crashes due to stale observers.
+*/
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
@@ -81,6 +88,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             findNavController().navigate(HomeFragmentDirections.toCategoriesFragment())
         }
 
+        // When the view gains focus (i.e., when the user taps on it to enter text), it triggers
+        // a navigation event to move to the SearchFragment
         searchContainer.search.setOnFocusChangeListener { view, focused ->
             if (focused.not()) return@setOnFocusChangeListener
             findNavController().navigate(HomeFragmentDirections.toSearchFragment())
@@ -96,10 +105,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             error.root.isVisible = it
         }
         viewModel.home.observe(viewLifecycleOwner) {
-            home.isVisible = it != null
+            home.isVisible = it != null //UI element visible
             it ?: return@observe
 
-            //avatarni korsatish
+            //show the avatar
             val name = it.user.firstName ?: it.user.username
             greeting.text = getString(R.string.fragment_home_greeting, name)
             Glide.with(root).load(it.user.avatar).into(avatar)
@@ -120,7 +129,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 it.sections,
                 this@HomeFragment::showAll,
                 this@HomeFragment::onClickProduct,
-                this@HomeFragment::like
+                this@HomeFragment::wishlist
             )
             count.text = it.notificationCount.toString()
         }
@@ -142,7 +151,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         findNavController().navigate(HomeFragmentDirections.toDetailFragment(product.id))
     }
 
-    private fun like(product: Product) {
-
+    private fun wishlist(product: Product) {
+        viewModel.toggleWishlist(product)
     }
 }

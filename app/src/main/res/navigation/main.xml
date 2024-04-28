@@ -98,6 +98,12 @@
             app:nullable="true"
             android:defaultValue="@null"
             />
+
+        <argument
+            android:name="wishlist"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+
         <action
             android:id="@+id/to_filterFragment"
             app:destination="@id/filterFragment"/>
@@ -173,11 +179,6 @@
         tools:layout="@layout/fragment_orders"
         android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
 
-    <fragment
-        android:id="@+id/ordersFragment"
-        android:label="OrdersFragment"
-        tools:layout="@layout/fragment_orders"
-        android:name="com.oybekdev.e_commerce.presentation.orders.OrdersFragment"/>
 
     <fragment
         android:id="@+id/cardFragment"
@@ -189,7 +190,22 @@
         android:id="@+id/wishlistFragment"
         android:label="WishlistFragment"
         tools:layout="@layout/fragment_wishlist"
-        android:name="com.oybekdev.e_commerce.presentation.wishlist.WishlistFragment"/>
+        android:name="com.oybekdev.e_commerce.presentation.wishlist.WishlistFragment">
+
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
+        <action
+            android:id="@+id/to_searchFragment"
+            app:destination="@+id/searchFragment">
+
+            <argument
+                android:name="wishlist"
+                app:argType="boolean"
+                android:defaultValue="true"/>
+        </action>
+
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"

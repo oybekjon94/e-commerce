@@ -10,9 +10,14 @@ import com.oybekdev.e_commerce.databinding.ItemCategoryHomeBinding
 
 class HomeCategoryAdapter(
     private val categories:List<Category>,
+    //A lambda function that will be invoked when a category item is clicked.
     private val onClick:(category:Category) -> Unit
 ): RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder>() {
 
+    /*
+    ViewHolder is responsible for caching and managing the view references for each item in
+    the RecyclerView.It binds the Category data to the corresponding views within the item layout.
+     */
     inner class ViewHolder(private val binding: ItemCategoryHomeBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(category: Category) = with(binding){
             Glide.with(root).load(category.image).into(image)

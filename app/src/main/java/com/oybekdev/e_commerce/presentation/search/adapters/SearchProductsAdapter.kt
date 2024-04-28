@@ -12,6 +12,7 @@ class SearchProductsAdapter(
     private val like:(product:Product) -> Unit
 ) :PagingDataAdapter<Product, SearchProductViewHolder>(DIFF_UTIL){
 
+    //to efficiently handle item changes and animations when the underlying dataset changes
     companion object{
         private val DIFF_UTIL = object :DiffUtil.ItemCallback<Product>(){
             override fun areItemsTheSame(oldItem: Product, newItem: Product) = oldItem.id == newItem.id

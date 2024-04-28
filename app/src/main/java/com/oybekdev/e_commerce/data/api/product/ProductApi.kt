@@ -9,7 +9,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductApi {
-
     @GET("home")
     suspend fun getHome():HomeResponse
 
@@ -24,6 +23,7 @@ interface ProductApi {
         @Query("size")size:Int,
         @Query("from")from:Float?,
         @Query("to")to:Float?,
+        @Query("favorite") favorite:Boolean,
         @Query("rating")rating:Int?,
         @Query("discount")discount:Int?,
         @Query("sort")sort:String?
@@ -33,4 +33,10 @@ interface ProductApi {
     suspend fun getProduct(
         @Path("id") id:String
     ):Detail
+
+    @GET("products/{id}/toggle-wishlist")
+    suspend fun toggleWishlist(
+        @Path("id")id:String,
+        @Query("wishlist")wishlist:Boolean
+    )
 }

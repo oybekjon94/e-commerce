@@ -19,4 +19,5 @@ interface ProductRepository {
     suspend fun clearRecents()
     suspend fun addRecents(search:String)
     suspend fun getProduct(id:String):Detail
+    suspend fun toggleWishlist(productId:String, wishlist:Boolean)
 }

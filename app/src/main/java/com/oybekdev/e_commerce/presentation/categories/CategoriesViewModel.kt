@@ -18,6 +18,10 @@ class CategoriesViewModel @Inject constructor(
     val error = MutableLiveData(false)
     val categories = MutableLiveData<List<Category>>()
 
+    /*
+     it calls the getCategories() function to fetch the list of
+     categories when the ViewModel is created.
+     */
     init {
         getCategories()
     }

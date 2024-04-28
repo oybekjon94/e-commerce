@@ -7,7 +7,8 @@ data class Detail(
     val category: String,
     val description: String,
     val discount: Double?,
-    val favorite: Boolean,
+    @SerializedName("favorite")
+    val wishlist: Boolean,
     val id: String,
     val images: List<String>,
     @SerializedName("in_stock")

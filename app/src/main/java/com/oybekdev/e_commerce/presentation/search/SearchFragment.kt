@@ -1,26 +1,20 @@
 package com.oybekdev.e_commerce.presentation.search
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.PagingData
-import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.databinding.FragmentSearchBinding
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.presentation.filter.FilterFragment
-import com.oybekdev.e_commerce.presentation.home.HomeFragmentDirections
 import com.oybekdev.e_commerce.presentation.search.SearchFragmentDirections.toFilterFragment
 import com.oybekdev.e_commerce.presentation.search.adapters.RecentAdapter
 import com.oybekdev.e_commerce.presentation.search.adapters.SearchProductsAdapter
@@ -33,13 +27,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
     private val viewModel by viewModels<SearchViewModel>()
+    //It's used to retrieve the arguments passed to the current fragment from the navigation graph.
     private val args by navArgs<SearchFragmentArgs>()
     private val adapter by lazy { SearchProductsAdapter(this::onProductClick, this::like) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        args.category?.let { viewModel.setCategory(it) }
+        viewModel.setInitials(args.category, args.wishlist)
 
         adapter.addLoadStateListener {
             viewModel.setLoadState(it)

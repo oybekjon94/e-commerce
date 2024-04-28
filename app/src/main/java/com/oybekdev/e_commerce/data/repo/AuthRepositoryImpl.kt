@@ -35,7 +35,7 @@ class AuthRepositoryImpl @Inject constructor(
         val response = authApi.signUp(request)
         saveUserInfo(response)
     }
-
+//destination
     override fun destinationFlow() = channelFlow {
         suspend fun sendDestination() {
             when {

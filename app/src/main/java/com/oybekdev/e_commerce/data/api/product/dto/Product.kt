@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class Product(
     val id: String,
     val discount: Double?,
-    var favorite: Boolean,
+    @SerializedName("favorite")
+    var wishlist: Boolean,
     val image: String,
     val price: Double,
     val rating: Double,

@@ -4,10 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oybekdev.e_commerce.data.api.product.dto.HomeResponse
+import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -17,7 +19,6 @@ class HomeViewModel @Inject constructor(
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
     val home = MutableLiveData<HomeResponse?>(null)
-
     init {
         getHome()
     }
@@ -32,6 +33,14 @@ class HomeViewModel @Inject constructor(
             error.postValue(true)
         }finally {
             loading.postValue(false)
+        }
+    }
+
+    fun toggleWishlist(product:Product) = viewModelScope.launch {
+        try {
+            productRepository.toggleWishlist(product.id,product.wishlist)
+        }catch (e:Exception){
+
         }
     }
 }
