@@ -1,14 +1,14 @@
 package com.oybekdev.e_commerce.data.repo
 
-import androidx.annotation.BoolRes
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.oybekdev.e_commerce.data.api.product.ProductApi
 import com.oybekdev.e_commerce.data.api.product.dto.HomeResponse
-import com.oybekdev.e_commerce.data.api.product.dto.Product
 import com.oybekdev.e_commerce.data.api.product.paging.ProductPagingSource
+import com.oybekdev.e_commerce.data.store.CartStore
 import com.oybekdev.e_commerce.data.store.RecentsStore
 import com.oybekdev.e_commerce.data.store.UserStore
+import com.oybekdev.e_commerce.domain.model.Cart
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import com.oybekdev.e_commerce.domain.repo.ProductRepository
 import kotlinx.coroutines.flow.map
@@ -18,6 +18,7 @@ class ProductRepositoryImpl @Inject constructor(
     private val productApi: ProductApi,
     private val userStore: UserStore,
     private val recentsStore: RecentsStore,
+    private val cartStore:CartStore
 ) : ProductRepository {
     override suspend fun getHome(): HomeResponse {
         val response = productApi.getHome()
@@ -54,5 +55,20 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun toggleWishlist(productId:String,wishlist:Boolean) {
         productApi.toggleWishlist(productId,wishlist)
     }
+
+    override suspend fun setCart(cart: Cart) {
+        val carts = (cartStore.get() ?: emptyArray())
+            .toList()
+            .filterNot { it.id == cart.id }
+            .toMutableList()
+        if (cart.count > 0){
+            carts.add(cart)
+        }
+        cartStore.set(carts.toTypedArray())
+    }
+
+    override fun getCarts() = cartStore.getFlow().map { it?.toList() ?: emptyList() }
+
+    override suspend fun clearCart() = cartStore.clear()
 
 }
