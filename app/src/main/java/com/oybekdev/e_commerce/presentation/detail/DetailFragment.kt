@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.oybekdev.e_commerce.R
 import com.oybekdev.e_commerce.common.Constants
 import com.oybekdev.e_commerce.data.api.product.dto.Product
@@ -118,6 +119,12 @@ class DetailFragment:BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::
 
         favorite.setOnClickListener {
             viewModel.toggleWishlist()
+        }
+            //for the Cart Screen
+        add.setOnClickListener {
+            viewModel.set()
+            Snackbar.make(root,R.string.fragment_detail_cart_added,Snackbar.LENGTH_SHORT).show()
+            findNavController().popBackStack()
         }
     }
     private fun onClick(product:Product){

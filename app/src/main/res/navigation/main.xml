@@ -183,8 +183,13 @@
     <fragment
         android:id="@+id/cardFragment"
         android:label="CardFragment"
-        tools:layout="@layout/fragment_card"
-        android:name="com.oybekdev.e_commerce.presentation.card.CardFragment"/>
+        tools:layout="@layout/fragment_cart"
+        android:name="com.oybekdev.e_commerce.presentation.card.CardFragment">
+
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/wishlistFragment"
