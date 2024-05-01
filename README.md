@@ -39,8 +39,8 @@
  ![Screenshot_3](https://github.com/oybekjon94/e-commerce/assets/91370134/7d8f78d2-f8bf-460b-8850-05e3ddcef3cc) | ![Screenshot_4](https://github.com/oybekjon94/e-commerce/assets/91370134/82c8a1f1-7510-44f9-8c72-bc614eaea9ed) 
  Filter | Detail 
 ![Screenshot_5](https://github.com/oybekjon94/e-commerce/assets/91370134/a2d794f3-bd74-43d1-8d2c-121b540577b2) | ![Screenshot_6](https://github.com/oybekjon94/e-commerce/assets/91370134/d5e7be42-86f4-4281-904e-03ea936413de)
-Wishlist | not completed yet
-![Screenshot_7](https://github.com/oybekjon94/e-commerce/assets/91370134/ff025569-2f82-4b4b-9d27-ff4ff4bec603) |
+Wishlist | Cart
+![Screenshot_7](https://github.com/oybekjon94/e-commerce/assets/91370134/ff025569-2f82-4b4b-9d27-ff4ff4bec603) | ![Screenshot_1](https://github.com/oybekjon94/e-commerce/assets/91370134/d15992ad-b5f8-4c6a-b5e5-d66e71f2e7fa)
 
 
 ### Package Structure

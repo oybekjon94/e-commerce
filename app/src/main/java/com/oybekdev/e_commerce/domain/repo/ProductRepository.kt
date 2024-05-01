@@ -7,6 +7,7 @@ import com.oybekdev.e_commerce.data.api.product.dto.Category
 import com.oybekdev.e_commerce.data.api.product.dto.Detail
 import com.oybekdev.e_commerce.data.api.product.dto.HomeResponse
 import com.oybekdev.e_commerce.data.api.product.dto.Product
+import com.oybekdev.e_commerce.domain.model.Cart
 import com.oybekdev.e_commerce.domain.model.ProductQuery
 import kotlinx.coroutines.flow.Flow
 
@@ -20,4 +21,8 @@ interface ProductRepository {
     suspend fun addRecents(search:String)
     suspend fun getProduct(id:String):Detail
     suspend fun toggleWishlist(productId:String, wishlist:Boolean)
+
+    suspend fun setCart(cart: Cart)
+    fun getCarts():Flow<List<Cart>>
+    suspend fun clearCart()
 }
