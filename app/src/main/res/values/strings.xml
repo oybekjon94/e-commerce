@@ -75,6 +75,9 @@
     <string name="navigation_title_card">Card</string>
     <string name="navigation_title_wishlist">Wishlist</string>
     <string name="navigation_title_profile">Profile</string>
+    <string name="fragment_my_orders">My Orders</string>
+    <string name="item_order_id">Order ID #%d</string>
+    <string name="item_order_count">%d items</string>
     <string name="fragment_cart_title">Shopping Cart</string>
     <string name="fruits">Fruist</string>
     <string name="fragment_cart_billing_title">Billing details</string>
